@@ -36,8 +36,9 @@ void main() {
 ```dart
 class CommonVariable {
   late bool isDownloaded;
-  // static 멤버 선언(인스턴스 멤버가 아닌 클래스 멤버)
+  // static 변수 선언(인스턴스 변수가 아닌 클래스 변수)
   // 최초로 한번만 생성되고 공용으로 사용할 수 있음
+  // ! 클래스 변수는 생성자 없이 접근할 수 있다 !
   // 처음에 CommonVariable 객체 생성할때 이곳이 호출되어서 
   // CommonVaribale._internal() 을 통해 isDownloaded가 false로 세팅된다
   // 이후 또 다른 객체를 생성하려고 하더라도 factory로 호출이 되어서
@@ -81,3 +82,5 @@ https://roseline.oopy.io/dev/flutter-tips/what-is-factory
 https://another-light.tistory.com/77
 
 https://coding-factory.tistory.com/524
+
+https://sudarlife.tistory.com/entry/%ED%94%8C%EB%9F%AC%ED%84%B0%EB%8B%A4%ED%8A%B8-%ED%8C%A9%ED%86%A0%EB%A6%ACFactory-%ED%8C%A8%ED%84%B4-%EC%98%88%EC%A0%9C%EB%A1%9C-%EC%A0%95%EB%B3%B5%ED%95%98%EA%B8%B0
