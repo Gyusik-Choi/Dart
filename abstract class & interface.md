@@ -76,7 +76,8 @@ class BMW implements Vehicle {
 }
 
 // vs code를 기준으로 이 경우에 BMW에 빨간줄이 생기고
-// Missing concrete implementations of 'Vehicle.printDetail', 'getter Vehicle.type', // and 'setter Vehicle.type'. Try implementing the missing methods, or make the 
+// Missing concrete implementations of 'Vehicle.printDetail', 'getter Vehicle.type', 
+// and 'setter Vehicle.type'. Try implementing the missing methods, or make the 
 // class abstract.
 // 이러한 에러를 발생시킨다
 ```
