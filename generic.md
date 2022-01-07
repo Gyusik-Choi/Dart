@@ -56,7 +56,7 @@ void main() {
 
 <br>
 
-#### 인터페이스 클래스
+#### 추상 클래스
 
 ```dart
 abstract class Cache<T> {
@@ -81,7 +81,8 @@ class AnotherCache2 extends Cache<String> {
   String getByKey(String key) {
     return key;
   }
-
+  
+  // 추상 클래스를 extends 할 경우 반드시 재정의를 해줘야 하는데, 리턴 타입을 바꿀 수 있다. void에서 List로 바꿨음.
   @override
   List setByKey(String key, String value) {
     return [];
