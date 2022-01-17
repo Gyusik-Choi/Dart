@@ -113,9 +113,40 @@ void main() {
 
 ### Extending a Class
 
-abstract 클래스를 implements 할 수도 있고 extends 할 수도 있다. 그러나 implements를 할 경우에는 abstract 클래스의 변수와 메서드를 모두 재정의해줘야 한다. 이때 문제가 될 수 있는 부분은 추후 abstract 클래스를 수정하게 되면 이 클래스를 implements 해서 사용하는 다른 클래스들에서 모두 에러가 발생할 수 있다. 그리고 모든 클래스들에서 재정의를 다시 해줘야하므로 유지 보수에 어려움이 발생할 수 있다.
+abstract 클래스를 implements 할 수도 있고 extends 할 수도 있다. 
 
-abstract 클래스는 extends 해서 사용하거나 factory 생성자를 활용해서 사용하는게 좋을 듯 하다.
+그러나 implements를 할 경우에는 abstract 클래스의 변수와 메서드를 모두 재정의해줘야 한다. extends 할 경우에는 변수는 재정의하지 않아도 에러 발생하지 않는다.
+
+```dart
+abstract class SmartPhone {
+  late String os;
+
+  void showOS();
+}
+
+class Apple extends SmartPhone {
+  @override
+  void showOS() {
+
+  }
+}
+
+class Samsung implements SmartPhone {
+  @override
+  String os = 'Android';
+  // os 를 재정의하지 않으면 아래와 같은 에러 발생
+  // Missing concrete implementations of 'getter SmartPhone.os' and 'setter SmartPhone.os'. Try implementing the missing methods, or make the class abstract.
+    
+  @override
+  void showOS() {
+    
+  }
+
+
+}
+```
+
+
 
 <br>
 

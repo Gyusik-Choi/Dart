@@ -36,7 +36,9 @@ void main() {
 
 <br>
 
-공식 문서에서 얘기한 방법과 다르게 추상 메서드를 추상 클래스에서 정의해도 사용하는데는 문제 없다.
+### 일반 메서드
+
+공식 문서에서 얘기한 방법과 다르게 추상 메서드를 추상 클래스에서 정의해도 사용하는데는 문제 없다. 정의하면 추상 메서드가 아니라 일반 메서드가 된다.
 
 ```dart
 abstract class Vehicle {
@@ -69,6 +71,35 @@ void main() {
   // 456
 }
 ```
+
+<br>
+
+### implements는 일반 메서드도 재구현 필요
+
+추상 클래스를 extends하는 클래스의 경우 추상 클래스의 일반 메서드를 구현하지 않아도 에러 발생하지 않는다. 다만 implements하는 클래스는 구현하지 않으면 에러 발생한다.
+
+```dart
+abstract class Vehicle {
+  void getSpeed() {
+    print(0);
+  }
+}
+
+class BMW extends Vehicle {
+
+}
+
+class Audi implements Vehicle {
+  @override
+  void getSpeed() {
+
+  }
+  // 일반 메서드를 구현하지 않으면 아래와 같은 에러 발생한다.
+  // Missing concrete implementation of 'Vehicle.getSpeed'. Try implementing the missing method, or make the class abstract.
+}
+```
+
+
 
 <br>
 
@@ -109,6 +140,8 @@ void main() {
 ```
 
 <br>
+
+### 두개 이상의 클래스를 extends 할 수 없다
 
 단, 두개 이상의 클래스를 extends 해서 사용하려면 에러가 발생한다.
 
@@ -234,7 +267,9 @@ void main() {
 
 <br>
 
-추상 클래스와 인터페이스의 차이는 추상 클래스는 인스턴스를 생성할 수 없다.
+### 추상 클래스는 인스턴스 생성할 수 없다
+
+추상 클래스와 인터페이스의 차이는 추상 클래스는 인스턴스를 생성할 수 없다. 추상 클래스가 인스턴스를 생성하는 것 처럼 보이려면 factory를 활용할 수 있다.
 
 ```dart
 abstract class Vehicle {
