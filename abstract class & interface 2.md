@@ -99,6 +99,98 @@ class Audi implements Vehicle {
 }
 ```
 
+<br>
+
+### extends 에서 일반 메서드를 사용하려면
+
+추상 클래스의 일반 메서드와 같은 이름을 사용하고 super로 접근할 수 있다.
+
+```dart
+abstract class Vehicle {
+  void getSpeed() {
+    print(0);
+  }
+}
+
+class BMW extends Vehicle {
+  void getSpeed() {
+    super.getSpeed();
+  }
+}
+
+void main() {
+  BMW bmw = BMW();
+  bmw.getSpeed();
+  // 0
+}
+```
+
+<br>
+
+추상 클래스가 아닌 인터페이스 클래스(혹은 일반 클래스)에서도 같은 방법으로 접근할 수 있다.
+
+> Use `extends` to create a subclass, and `super` to refer to the superclass:
+
+**extends 하면 상하관계(superclass - subclass)가 생성된다.**
+
+```dart
+class Vehicle {
+  void getSpeed() {
+    print(0);
+  }
+}
+
+class BMW extends Vehicle {
+  void getSpeed() {
+    super.getSpeed();
+  }
+}
+
+void main() {
+  BMW bmw = BMW();
+  bmw.getSpeed();
+  // 0
+}
+```
+
+<br>
+
+implements 에서는 상하관계가 생성되지 않기 때문에 super로 접근할 수 없다. (추상 클래스와 일반 클래스 모두 동일한 에러 발생한다)
+
+```dart
+abstract class Vehicle {
+  void getSpeed() {
+    print(0);
+  }
+}
+
+class Audi implements Vehicle {
+  // 이는 실행되지 않고 에러 발생한다!
+  // The method 'getSpeed' is always abstract in the supertype.
+  void getSpeed() {
+    super.getSpeed();
+  }
+}
+```
+
+
+
+```dart
+class Vehicle {
+  void getSpeed() {
+    print(0);
+  }
+}
+
+class Audi implements Vehicle {
+  // 이는 실행되지 않고 에러 발생한다!
+  // The method 'getSpeed' is always abstract in the supertype.
+  void getSpeed() {
+    super.getSpeed();
+  }
+}
+```
+
 
 
 <br>
@@ -389,6 +481,3 @@ void main() {
 // 2
 // 인터페이스 클래스에서는 extends 해서 사용하면 Vehicle의 name 변수를 BMW에서 정의해주지 않아도 에러 발생하지 않는다.
 ```
-
-
-

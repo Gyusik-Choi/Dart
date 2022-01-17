@@ -113,6 +113,37 @@ void main() {
 
 ### Extending a Class
 
+> Use `extends` to create a subclass, and `super` to refer to the superclass:
+
+**extends 하면 상하관계(superclass - subclass)가 생성된다.**
+
+**두 개 이상의 클래스를 extends 할 수 없다.**  대신 두 개 이상의 클래스를 implements 할 수는 있다.
+
+```dart
+class MotorCycle {
+  void drive() {
+    print(1);
+  }
+}
+
+class Vehicle {
+  void getSpeed() {
+    print(0);
+  }
+}
+
+// 아래 코드는 실행될 수 없고 에러 발생한다!
+// Each class definition can have at most one extends clause. Try choosing one superclass and define your class to implement (or mix in) the others.
+class BMW extends Vehicle, MotorCycle {
+  void getSpeed() {
+    super.getSpeed();
+  }
+}
+
+```
+
+
+
 abstract 클래스를 implements 할 수도 있고 extends 할 수도 있다. 
 
 그러나 implements를 할 경우에는 abstract 클래스의 변수와 메서드를 모두 재정의해줘야 한다. extends 할 경우에는 변수는 재정의하지 않아도 에러 발생하지 않는다.
@@ -162,3 +193,4 @@ https://limkydev.tistory.com/188
 
 https://codelabs.developers.google.com/codelabs/from-java-to-dart/#4
 
+https://velog.io/@hkoo9329/%EC%9E%90%EB%B0%94-extends-implements-%EC%B0%A8%EC%9D%B4
