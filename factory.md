@@ -49,7 +49,7 @@ class CommonVariable {
   factory CommonVariable() => _commonVariable;
 
   CommonVariable._internal() {
-      bool isDownloaded = false;
+      isDownloaded = false;
   }
 
   void changeIsDownloaded() => isDownloaded = !isDownloaded;
@@ -57,11 +57,20 @@ class CommonVariable {
 
 
 void main() {
-  CommonVariable commonVariable = CommonVariable();
-  print(commonVariable.isDownloaded);
-  commonVariable.changeIsDownloaded();
-  print(commonVariable.isDownloaded);
+  CommonVariable commonVariable1 = CommonVariable();
+  CommonVariable commonVariable2 = CommonVariable();
+  
+  print(commonVariable1.isDownloaded);
+  print(commonVariable2.isDownloaded);
+  
+  commonVariable1.changeIsDownloaded();
+  
+  print(commonVariable1.isDownloaded);
+  print(commonVariable2.isDownloaded);
 }
+
+// false
+// false
 
 // true
 // true
@@ -70,6 +79,45 @@ void main() {
 <br>
 
 개인적으로는 전역 변수를 다룰 때 사용하기 좋을 것 같다고 생각한다. 상태관리 라이브러리(ex> 플러터의 GetX 등) 쓴다면 factory가 불필요해 보일 수 있겠지만 전역 변수만 여러개 사용되는 환경에서 클래스로 전역 변수들만 따로 묶어서 사용한다면 여러 페이지에서 해당 변수의 값에 보다 편리하게 접근하여 변경하고 이를 공유할 수 있는 장점이 있다.
+
+<br>
+
+위의 예시처럼 _internal() 함수 안에서 isDownloaded를 초기화하지 않아도 값은 공유된다.
+
+```dart
+class CommonVariable {
+  bool isDownloaded = false;
+
+  static final CommonVariable _commonVariable = CommonVariable._internal();
+  CommonVariable._internal();
+  
+  factory CommonVariable() => _commonVariable;
+
+  void changeIsDownloaded() => isDownloaded = !isDownloaded;
+}
+
+
+void main() {
+  CommonVariable commonVariable1 = CommonVariable();
+  CommonVariable commonVariable2 = CommonVariable();
+  
+  print(commonVariable1.isDownloaded);
+  print(commonVariable2.isDownloaded);
+  
+  commonVariable1.changeIsDownloaded();
+  
+  print(commonVariable1.isDownloaded);
+  print(commonVariable2.isDownloaded);
+}
+
+// false
+// false
+
+// true
+// true
+```
+
+
 
 <br>
 
